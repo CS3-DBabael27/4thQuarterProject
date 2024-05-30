@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Prevention</title>
+</head>
+<body>
+<div class="top-bar" onclick="toggleNavbar()">CCChange Background Image(Easter Egg!!!</div>
+
+<div class="navbar" id="navbar">
+    <a href="#" onclick="changeBackground(1)">1</a>
+    <a href="#" onclick="changeBackground(2)">2</a>
+    <a href="#" onclick="changeBackground(3)">3</a>
+</div>
+<center>
+<button id="signup-btn">Sign Up</button>
+<button id="login-btn">Login</button>
+    <div class="nav">
+	    <a href="Origin.html">Prevention</a>
+        <a href="Diseases.html">Diseases</a>
+        <a href="Data.html">Data</a>
+        <a href="RiskFactor.html">Risk Factor</a>
+		<a href="References.html">References</a>
+    </div>
+	<h1 class="left">Prevention</h1>
+	<div class="intro">
+	<div class="slide">
+    <img src="image13.png" alt="Image 13"  width="400" height="300">
+	</div class="slidend">
+	<div class="slide">
+    <img src="image14.jpg" alt="Image 14"  width="400" height="300">
+	</div>
+	<div class="slide">
+    <img src="image15.webp" alt="Image 15"  width="400" height="300">
+	</div>
+  
+  
+	<a class="arrow prev" onclick="changeSlide(-1)">&#10094;</a>
+	<a class="arrow next" onclick="changeSlide(1)">&#10095;</a>
+	<h3>Epidemiology is the study and analysis of the distribution 
+	(who, when, and where), patterns and determinants of health and 
+	disease conditions in a defined population. Epidemiologists help with study design, 
+	collection, and statistical analysis of data, amend interpretation 
+	and dissemination of results (including peer review and occasional 
+	systematic review). Epidemiology has helped develop methodology used
+	in clinical research, public health studies, and, to a lesser extent,
+	basic research in the biological sciences.</h3>
+	</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<div class="ee">
+  <p>Think you learned anything?(Easter Egg2!!)</p>
+  <button class="quiz-button" onclick="Quiz()">(read the pages first,trust me.)</button>
+</div>
+</center>
+
+</body>
+<script>
+  function Quiz() {
+    window.location.href = 'quiz.html';
+  }
+    document.getElementById("signup-btn").addEventListener("click", function() {
+        window.location.href = "signup.html";
+    });
+    document.getElementById("login-btn").addEventListener("click", function() {
+        window.location.href = "login.html";
+    });
+  var currentSlide = 0;
+  var slides = document.getElementsByClassName("slide");
+
+  function showSlide(n) {
+    if (n >= slides.length) {
+      currentSlide = 0;
+    } else if (n < 0) {
+      currentSlide = slides.length - 1;
+    } else {
+      currentSlide = n;
+    }
+    
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    
+    slides[currentSlide].style.display = "block";
+  }
+
+  function changeSlide(n) {
+    showSlide(currentSlide += n);
+  }
+
+  showSlide(currentSlide);
+  
+	function toggleNavbar() {
+  var navbar = document.getElementById('navbar');
+  navbar.style.display = (navbar.style.display === 'none' || navbar.style.display === '') ? 'block' : 'none';
+	}
+
+    function changeBackground(imageNumber) {
+        var imagePath = '';
+        switch (imageNumber) {
+            case 1:
+                imagePath = 'bgi2.webp';
+                break;
+            case 2:
+                imagePath = 'bgi3.jpg';
+                break;
+            case 3:
+                imagePath = 'bgi4.jpg';
+                break;
+            default:
+                imagePath = 'bgi.jpg';
+        }
+        document.body.style.backgroundImage = "url('" + imagePath + "')";
+    }
+	
+	const container = document.getElementById('slide');
+  const image = document.getElementById('image');
+  const zoomedImage = document.getElementById('zoomedImage');
+
+  container.addEventListener('mousemove', function(event) {
+    const { offsetX, offsetY } = event;
+    const { left, top, width, height } = image.getBoundingClientRect();
+    const scale = 2; // Adjust the scale factor as needed
+
+    const posX = offsetX / width * 100;
+    const posY = offsetY / height * 100;
+
+    zoomedImage.style.backgroundImage = `url(${image.src})`;
+    zoomedImage.style.backgroundSize = `${width * scale}px ${height * scale}px`;
+    zoomedImage.style.backgroundPosition = `-${posX * scale}px -${posY * scale}px`;
+    zoomedImage.style.display = 'block';
+    zoomedImage.style.left = `${left}px`;
+    zoomedImage.style.top = `${top}px`;
+  });
+
+  container.addEventListener('mouseleave', function() {
+    zoomedImage.style.display = 'none';
+  });
+  		function createParticle(event) {
+		var particle = document.createElement("div");
+		particle.className = "particle";
+		particle.style.left = event.clientX + "px";
+		particle.style.top = event.clientY + "px";
+		document.body.appendChild(particle);
+		setTimeout(function() {
+			particle.remove();
+		}, 1000);
+	}
+	
+	document.addEventListener("click", createParticle);
+</script>
+<style>
+		.quiz-button:hover {
+		background-color:red;
+		}
+		.ee{
+		background-color:#666;
+		}
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('bgi.jpg'); /* Replace 'background-image.jpg' with your image file */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Keeps the background image fixed in place while scrolling */
+        }
+		
+
+        .nav {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 200px;
+            background-color: #333;
+            padding-top: 20px;
+            box-sizing: border-box;
+        }
+
+
+        .nav a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+
+
+        .nav a:hover {
+            background-color: #555; 
+        }
+		
+		.left{
+		padding-left:300px;
+		padding-top:50px;
+		}
+		
+		.intro{
+		   position: relative;
+		max-width: 800px;
+		margin: auto;
+		background-color:#999;
+		margin-top:100px;
+		}
+		.image1{
+		padding-left:450px;
+		}
+		.slide {
+		display: none;
+		width: 100%;
+		}
+		.arrow {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		cursor: pointer;
+		font-size: 24px;
+		color: white;
+		background-color: rgba(0, 0, 0, 0.5);
+		padding: 10px;
+		border-radius: 50%;
+		}
+		.prev {
+		left: 10px;
+		}
+		.next {
+		right: 10px;
+		}	
+		h1{
+		padding-right:300px;
+		}
+		  .particle {
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		background-color: #f0f0f0; /* Grey color */
+		border-radius: 50%;
+		pointer-events: none;
+		transition: transform 0.001s ease;
+		}
+		}
+		.top-bar {
+		position: fixed;
+		top: 0;
+		right: 0;
+		background-color: #333;
+		color: white;
+		padding: 10px 20px;
+		cursor: pointer;
+		z-index: 999;
+		}
+		.navbar {
+		display: none;
+		position: fixed;
+		top: 40px; /* Height of the top bar */
+		right: 0;
+		background-color: #333;
+		color: white;
+		padding: 20px;
+		z-index: 998;
+		}
+		.navbar a {
+		color: white;
+		text-decoration: none;
+		margin-right: 10px;
+	}	
+</style>
+</html>

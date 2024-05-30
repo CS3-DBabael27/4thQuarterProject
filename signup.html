@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Sign up</title>
+</head>
+<body>
+<div class="top-bar" onclick="toggleNavbar()">CCChange Background Image(Easter Egg!!!</div>
+
+<div class="navbar" id="navbar">
+    <a href="#" onclick="changeBackground(1)">1</a>
+    <a href="#" onclick="changeBackground(2)">2</a>
+    <a href="#" onclick="changeBackground(3)">3</a>
+</div>
+<center>
+    <div class="nav">
+        <a href="Diseases.html">Diseases</a>
+        <a href="Data.html">Data</a>
+        <a href="RiskFactor.html">Risk Factor</a>
+        <a href="Prevention.html">Prevention</a>
+		<a href="References.html">References</a>
+    </div>
+	<div class="intro">
+    <div class="form-container">
+        <h2>Sign Up</h2>
+        <form id="signup-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+	
+</center>
+</body>
+<script>
+        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var email = document.getElementById('email').value;
+            
+            // Store user data in local storage (this is just for demonstration purposes)
+            localStorage.setItem('user', JSON.stringify({ username, password, email }));
+            alert('Sign up successful!');
+
+            // Redirect to login page
+            window.location.href = 'login.html';
+        });
+  var currentSlide = 0;
+  var slides = document.getElementsByClassName("slide");
+
+  function showSlide(n) {
+    if (n >= slides.length) {
+      currentSlide = 0;
+    } else if (n < 0) {
+      currentSlide = slides.length - 1;
+    } else {
+      currentSlide = n;
+    }
+    
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    
+    slides[currentSlide].style.display = "block";
+  }
+
+  function changeSlide(n) {
+    showSlide(currentSlide += n);
+  }
+
+  showSlide(currentSlide);
+ 
+
+	function toggleNavbar() {
+  var navbar = document.getElementById('navbar');
+  navbar.style.display = (navbar.style.display === 'none' || navbar.style.display === '') ? 'block' : 'none';
+	}
+
+    function changeBackground(imageNumber) {
+        var imagePath = '';
+        switch (imageNumber) {
+            case 1:
+                imagePath = 'bgi2.webp';
+                break;
+            case 2:
+                imagePath = 'bgi3.jpg';
+                break;
+            case 3:
+                imagePath = 'bgi4.jpg';
+                break;
+            default:
+                imagePath = 'bgi.jpg';
+        }
+        document.body.style.backgroundImage = "url('" + imagePath + "')";
+		}
+	        document.getElementById('signup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var email = document.getElementById('email').value;
+            
+          
+            localStorage.setItem('user', JSON.stringify({ username, password, email }));
+            alert('Sign up successful!');
+
+ 
+            window.location.href = 'login.html';
+        });
+				function createParticle(event) {
+		var particle = document.createElement("div");
+		particle.className = "particle";
+		particle.style.left = event.clientX + "px";
+		particle.style.top = event.clientY + "px";
+		document.body.appendChild(particle);
+		setTimeout(function() {
+			particle.remove();
+		}, 1000);
+	}
+	
+	document.addEventListener("click", createParticle);
+</script>
+<style>
+        body {
+		    font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-image: url('bgi.jpg'); /* Replace 'background-image.jpg' with your image file */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Keeps the background image fixed in place while scrolling */
+        }
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+        }
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+        }   
+
+        .nav {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 200px;
+            background-color: #333;
+            padding-top: 20px;
+            box-sizing: border-box;
+        }
+
+
+        .nav a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+
+
+        .nav a:hover {
+            background-color: #555; 
+        }
+		
+		.left{
+		padding-left:300px;
+		padding-top:50px;
+		}
+		
+		.intro{
+		  position: relative;
+		max-width: 800px;
+		margin: auto;
+		margin-top:100px;
+		background-color:#999;
+		}
+		.image1{
+		padding-left:450px;
+		}
+		.slide {
+		display: none;
+		width: 100%;
+		}
+		.arrow {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		cursor: pointer;
+		font-size: 24px;
+		color: white;
+		background-color: rgba(0, 0, 0, 0.5);
+		padding: 10px;
+		border-radius: 50%;
+		}
+		.prev {
+		left: 10px;
+		}
+		.next {
+		right: 10px;
+		}	
+		h1{
+		padding-right:300px;
+		}
+		  .particle {
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		background-color: #f0f0f0; /* Grey color */
+		border-radius: 50%;
+		pointer-events: none;
+		transition: transform 1s ease;
+		}
+		}
+		.top-bar {
+		position: fixed;
+		top: 0;
+		right: 0;
+		background-color: #333;
+		color: white;
+		padding: 10px 20px;
+		cursor: pointer;
+		z-index: 999;
+		}
+		.navbar {
+		display: none;
+		position: fixed;
+		top: 40px; /* Height of the top bar */
+		right: 0;
+		background-color: #333;
+		color: white;
+		padding: 20px;
+		z-index: 998;
+		}
+		.navbar a {
+		color: white;
+		text-decoration: none;
+		margin-right: 10px;
+	}	
+</style>
+</html>

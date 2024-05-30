@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Data</title>
+</head>
+<body>
+<div class="top-bar" onclick="toggleNavbar()">CCChange Background Image(Easter Egg!!!</div>
+
+<div class="navbar" id="navbar">
+    <a href="#" onclick="changeBackground(1)">1</a>
+    <a href="#" onclick="changeBackground(2)">2</a>
+    <a href="#" onclick="changeBackground(3)">3</a>
+</div>
+<center>
+<button id="signup-btn">Sign Up</button>
+<button id="login-btn">Login</button>
+    <div class="nav">
+        <a href="Origin.html">Origin</a>
+        <a href="Diseases.html">Diseases</a>
+        <a href="RiskFactor.html">Risk Factor</a>
+        <a href="Prevention.html">Prevention</a>
+		<a href="References.html">References</a>
+    </div>
+	<h1 class="left"> Data & Charts </h1>
+	<div class="intro">
+	<div class="slide">
+    <img src="image4.jpg" alt="Image 4"  width="400" height="300">
+	</div>
+	<div class="slide">
+    <img src="image5.jpg" alt="Image 5"  width="400" height="300">
+	</div>
+	<div class="slide">
+    <img src="image6.jpg" alt="Image 6"  width="400" height="300">
+	</div>
+  
+	<a class="arrow prev" onclick="changeSlide(-1)">&#10094;</a>
+	<a class="arrow next" onclick="changeSlide(1)">&#10095;</a>
+	<h3>Epidemiology relies heavily on data to understand the distribution, determinants, 
+	and dynamics of disease within populations. Through meticulous data collection and 
+	analysis, epidemiologists unravel the intricate threads connecting various factors, 
+	from demographic characteristics to environmental exposures and genetic predispositions.
+	Epidemiological data encompass a vast array of sources, including health records, 
+	surveillance systems, community surveys, and clinical studies. These data provide 
+	invaluable insights into disease trends, risk factors, and patterns of transmission,
+	guiding public health policies and interventions. Advanced statistical methods and
+	modeling techniques help epidemiologists sift through the complexities of data, 
+	identifying associations, predicting outbreaks, and assessing the impact of interventions.
+	With the advent of digital technologies and big data analytics, epidemiologists can 
+	harness massive datasets in real-time, enabling more timely and targeted responses 
+	to emerging health threats. By leveraging the power of data, epidemiology continues 
+	to evolve as a vital tool in safeguarding public health and shaping evidence-based 
+	policies for disease prevention and control.</h3>
+	</div>
+
+
+	
+</center>
+</body>
+<script>
+    document.getElementById("signup-btn").addEventListener("click", function() {
+        window.location.href = "signup.html";
+    });
+    document.getElementById("login-btn").addEventListener("click", function() {
+        window.location.href = "login.html";
+    });
+  var currentSlide = 0;
+  var slides = document.getElementsByClassName("slide");
+
+  function showSlide(n) {
+    if (n >= slides.length) {
+      currentSlide = 0;
+    } else if (n < 0) {
+      currentSlide = slides.length - 1;
+    } else {
+      currentSlide = n;
+    }
+    
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    
+    slides[currentSlide].style.display = "block";
+  }
+
+  function changeSlide(n) {
+    showSlide(currentSlide += n);
+  }
+
+  showSlide(currentSlide);
+  
+	function toggleNavbar() {
+  var navbar = document.getElementById('navbar');
+  navbar.style.display = (navbar.style.display === 'none' || navbar.style.display === '') ? 'block' : 'none';
+	}
+
+    function changeBackground(imageNumber) {
+        var imagePath = '';
+        switch (imageNumber) {
+            case 1:
+                imagePath = 'bgi2.webp';
+                break;
+            case 2:
+                imagePath = 'bgi3.jpg';
+                break;
+            case 3:
+                imagePath = 'bgi4.jpg';
+                break;
+            default:
+                imagePath = 'bgi.jpg';
+        }
+        document.body.style.backgroundImage = "url('" + imagePath + "')";
+    }
+		function createParticle(event) {
+		var particle = document.createElement("div");
+		particle.className = "particle";
+		particle.style.left = event.clientX + "px";
+		particle.style.top = event.clientY + "px";
+		document.body.appendChild(particle);
+		setTimeout(function() {
+			particle.remove();
+		}, 1000);
+	}
+	
+	document.addEventListener("click", createParticle);
+</script>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('bgi.jpg'); /* Replace 'background-image.jpg' with your image file */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Keeps the background image fixed in place while scrolling */
+        }
+		
+
+        .nav {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 200px;
+            background-color: #333;
+            padding-top: 20px;
+            box-sizing: border-box;
+        }
+
+
+        .nav a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+
+
+        .nav a:hover {
+            background-color: #555; 
+        }
+		
+		.left{
+		padding-left:300px;
+		padding-top:50px;
+		}
+		
+		.intro{
+		position: relative;
+		margin-top:100px;
+		max-width: 800px;
+		margin: auto;
+		background-color:#999;
+		}
+		.image1{
+		padding-left:450px;
+		}
+		.slide {
+		display: none;
+		width: 100%;
+		}
+		.arrow {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		cursor: pointer;
+		font-size: 24px;
+		color: white;
+		background-color: rgba(0, 0, 0, 0.5);
+		padding: 10px;
+		border-radius: 50%;
+		}
+		.prev {
+		left: 10px;
+		}
+		.next {
+		right: 10px;
+		}	
+		h1{
+		padding-right:300px;
+		}
+		  .particle {
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		background-color: #f0f0f0; /* Grey color */
+		border-radius: 50%;
+		pointer-events: none;
+		transition: transform 0.001s ease;
+		}
+		}
+		.top-bar {
+		position: fixed;
+		top: 0;
+		right: 0;
+		background-color: #333;
+		color: white;
+		padding: 10px 20px;
+		cursor: pointer;
+		z-index: 999;
+		}
+		.navbar {
+		display: none;
+		position: fixed;
+		top: 40px; /* Height of the top bar */
+		right: 0;
+		background-color: #333;
+		color: white;
+		padding: 20px;
+		z-index: 998;
+		}
+		.navbar a {
+		color: white;
+		text-decoration: none;
+		margin-right: 10px;
+	}	
+</style>
+</html>

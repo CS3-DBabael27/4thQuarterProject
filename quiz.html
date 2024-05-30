@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Epidemiology Quiz</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #f0f8ff, #a1c4fd);
+    text-align: center;
+    padding-top: 50px;
+  }
+  .quiz-container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .question {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  .choices {
+    list-style: none;
+    padding: 0;
+  }
+  .choice {
+    margin: 10px 0;
+  }
+  .choice button {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  .choice button:hover {
+    background-color: #45a049;
+  }
+  .result {
+    display: none;
+    font-size: 1.2em;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<div class="quiz-container" id="quiz-container">
+  <h1>Epidemiology Quiz</h1>
+  <div class="question" id="question">What does risk refer to in epidemiology?</div>
+  <ul class="choices">
+    <li class="choice"><button onclick="checkAnswer('Incorrect', 0)">The likelihood of an individual having a disease</button></li>
+    <li class="choice"><button onclick="checkAnswer('Correct', 1)">The probability of an individual developing a disease</button></li>
+    <li class="choice"><button onclick="checkAnswer('Incorrect', 0)">The severity of a disease in a population</button></li>
+    <li class="choice"><button onclick="checkAnswer('Incorrect', 0)">The number of cases in a population</button></li>
+  </ul>
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+  const questions = [
+    {
+      question: "What does risk refer to in epidemiology?",
+      choices: [
+        "A)The likelihood of an individual having a disease",
+        "B)The probability of an individual developing a disease",
+        "C)The severity of a disease in a population",
+        "D)The number of cases in a population"
+      ],
+      correctAnswer: 1
+    },
+    {
+      question: "What is the primary mode of transmission for the influenza virus?",
+      choices: [
+        "A)Contaminated food and water",
+        "B)Mosquito bites",
+        "C)Airborne droplets",
+        "D)Direct contact with infected skin"
+      ],
+      correctAnswer: 2
+    },
+    {
+      question: "Which virus causes the disease known as COVID-19?",
+      choices: [
+        "A)Ebola virus",
+        "B)Zika virus",
+        "C)SARS-CoV-2",
+        "D)HIV"
+      ],
+      correctAnswer: 2
+    },
+    {
+      question: "Does Epidemiology Also Take account of the population?",
+      choices: [
+        "A)No",
+        "B)Yes",
+      ],
+      correctAnswer: 1
+    },
+    {
+      question: "What does HIV stand for?",
+      choices: [
+	"A) Human Immune Virus",
+	"B) Human Immunodeficiency Virus",
+	"C) Human Infection Virus",
+	"D) Human Inflammatory Virus",
+      ],
+      correctAnswer: 1
+    }
+  ];
+
+  let currentQuestion = 0;
+
+  function checkAnswer(answer, questionIndex) {
+    const result = document.getElementById('result');
+    if (answer === 'Correct') {
+      currentQuestion++;
+      if (currentQuestion < questions.length) {
+        loadQuestion(currentQuestion);
+      } else {
+        result.textContent = 'Congratulations! You completed the quiz!';
+        result.style.color = 'green';
+        result.style.display = 'block';
+      }
+    } else {
+      window.location.href = 'quiz.html';
+    }
+  }
+		function createParticle(event) {
+		var particle = document.createElement("div");
+		particle.className = "particle";
+		particle.style.left = event.clientX + "px";
+		particle.style.top = event.clientY + "px";
+		document.body.appendChild(particle);
+		setTimeout(function() {
+			particle.remove();
+		}, 1000);
+	}
+	
+	document.addEventListener("click", createParticle);
+  function loadQuestion(questionIndex) {
+    const questionElement = document.getElementById('question');
+    const choicesElement = document.querySelector('.choices');
+    const result = document.getElementById('result');
+    const question = questions[questionIndex];
+
+    questionElement.textContent = question.question;
+    choicesElement.innerHTML = '';
+
+    question.choices.forEach((choice, index) => {
+      const choiceElement = document.createElement('li');
+      choiceElement.classList.add('choice');
+      const button = document.createElement('button');
+      button.textContent = choice;
+      button.setAttribute('onclick', `checkAnswer('${index === question.correctAnswer ? 'Correct' : 'Incorrect'}', ${questionIndex})`);
+      choiceElement.appendChild(button);
+      choicesElement.appendChild(choiceElement);
+    });
+
+    result.style.display = 'none';
+  }
+
+
+  loadQuestion(currentQuestion);
+</script>
+</body>
+</html>
